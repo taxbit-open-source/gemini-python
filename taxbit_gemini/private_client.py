@@ -25,7 +25,7 @@ class PrivateClient(PublicClient):
         else:
             self._base_url = 'https://api.gemini.com'
 
-    def api_query(self, method, payload=None, return_status=False) -> Union[json, tuple]:
+    def api_query(self, method, payload=None, return_status=False) -> Union[dict, tuple]:
         if payload is None:
             payload = {}
         request_url = self._base_url + method
