@@ -1,5 +1,6 @@
 keys.txt 
 
+.idea/
 *.pyc
 *~
 *.swp

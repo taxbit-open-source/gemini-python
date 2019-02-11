@@ -2,6 +2,7 @@
 # Mohammad Usman
 #
 # A python wrapper for Gemini's public API
+from typing import Union
 
 from .public_client import PublicClient
 import requests
@@ -10,6 +11,8 @@ import hmac
 import hashlib
 import base64
 import time
+
+TIME_LENGTH = 18
 
 
 class PrivateClient(PublicClient):
@@ -22,13 +25,15 @@ class PrivateClient(PublicClient):
         else:
             self._base_url = 'https://api.gemini.com'
 
-    def api_query(self, method, payload=None):
+    def api_query(self, method, payload=None, return_status=False) -> Union[json, tuple]:
         if payload is None:
             payload = {}
         request_url = self._base_url + method
 
         payload['request'] = method
-        payload['nonce'] = int(time.time() * 1000)
+        payload['nonce'] = str(int(time.time() * 1000))
+        while len(payload['nonce']) < TIME_LENGTH:
+            payload['nonce'] += "0"
         b64_payload = base64.b64encode(json.dumps(payload).encode('utf-8'))
         signature = hmac.new(self._private_key.encode('utf-8'), b64_payload, hashlib.sha384).hexdigest()
 
@@ -42,6 +47,8 @@ class PrivateClient(PublicClient):
         }
 
         r = requests.post(request_url, headers=headers)
+        if return_status:
+            return r.json(), r.status_code
         return r.json()
 
     # Order Placement API
@@ -205,21 +212,23 @@ class PrivateClient(PublicClient):
         """
         return self.api_query('/v1/orders')
 
-    def get_past_trades(self, symbol, limit_trades=None):
+    def get_past_trades(self, symbol, limit_trades=None, timestamp=0):
         """
         Returns all the past trades associated with the API.
         Providing a limit_trade is optional.
 
         Args:
-            symbols(str): Can be any value in self.symbols()
+            symbol(str): Can be any value in self.symbols()
             limit_trades(int): Default value is 500
+            timestamp(int): Default value is 0
 
         Results:
             array: An array of of dicts of the past trades
         """
         payload = {
             "symbol": symbol,
-            "limit_trades": 500 if limit_trades is None else limit_trades
+            "limit_trades": 500 if limit_trades is None else limit_trades,
+            "timestamp": timestamp
         }
         return self.api_query('/v1/mytrades', payload)
 

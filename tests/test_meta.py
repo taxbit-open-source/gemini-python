@@ -1,7 +1,7 @@
 import sys
 import os
 sys.path.insert(0, '..')
-from gemini import meta
+from taxbit_gemini import meta
 
 
 class A(metaclass=meta.Meta):

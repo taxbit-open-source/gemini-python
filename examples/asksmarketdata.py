@@ -7,7 +7,7 @@
 
 import sys
 sys.path.insert(0, '..')
-from gemini.basewebsocket import BaseWebSocket
+from taxbit_gemini.basewebsocket import BaseWebSocket
 from collections import deque
 
 

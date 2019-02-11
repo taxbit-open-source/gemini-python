@@ -4,17 +4,17 @@ A python client for the Gemini API and Websocket
 ## Getting Started
 ### Installation
 ```python
-pip install gemini_python
+pip install taxbit_gemini
 ```
 ### PublicClient
 This endpoint doesn't require an api-key and can
 be used without having a Gemini account. This README
 will document some of the methods and features of the class.
 ```python
-import gemini
-r = gemini.PublicClient()
+import taxbit_gemini
+r = taxbit_gemini.PublicClient()
 # Alternatively, for a sandbox environment, set sandbox=True
-r = gemini.PublicClient(sandbox=True)
+r = taxbit_gemini.PublicClient(sandbox=True)
 ```
 #### PublicClient Methods
 - [symbols](https://docs.gemini.com/rest-api/#symbols)
@@ -60,10 +60,10 @@ point to note is that every argument for the methods of PrivateClient must be
 strings with the exception of 'options'.
 
 ```python
-import gemini
-r = gemini.PrivateClient("EXAMPLE_PUBLIC_KEY", "EXAMPLE_PRIVATE_KEY")
+import taxbit_gemini
+r = taxbit_gemini.PrivateClient("EXAMPLE_PUBLIC_KEY", "EXAMPLE_PRIVATE_KEY")
 # Alternatively, for a sandbox environment, set sandbox=True
-r = gemini.PrivateClient("EXAMPLE_PUBLIC_KEY", "EXAMPLE_PRIVATE_KEY", sandbox=True)
+r = taxbit_gemini.PrivateClient("EXAMPLE_PUBLIC_KEY", "EXAMPLE_PRIVATE_KEY", sandbox=True)
 ```
 
 #### PrivateClient Methods
@@ -127,10 +127,10 @@ If you'd prefer to recieve live updates you can either choose to subsribe to the
 ### MarketData Websocket 
 Market data is a public API that streams all the market data on a given symbol.
 ```python
-import gemini
-r = gemini.MarketDataWS('btcusd')
+import taxbit_gemini
+r = taxbit_gemini.MarketDataWS('btcusd')
 # Alternatively, for a sandbox environment, set sandbox=True
-r = gemini.MarketDataWS('btcusd', sandbox=True)
+r = taxbit_gemini.MarketDataWS('btcusd', sandbox=True)
 ```
 #### MarketData Websocket Methods 
 - get list of recorded trades
@@ -181,10 +181,10 @@ Order events is a private API that gives you information about your orders in re
 Support for subscription filters is currently under development
 
 ```python
-import gemini
-r = gemini.OrderEventsWS("EXAMPLE_PUBLIC_KEY", "EXAMPLE_PRIVATE_KEY")
+import taxbit_gemini
+r = taxbit_gemini.OrderEventsWS("EXAMPLE_PUBLIC_KEY", "EXAMPLE_PRIVATE_KEY")
 # Alternatively, for a sandbox environment, set sandbox=True
-r = gemini.OrderEventsWS("EXAMPLE_PUBLIC_KEY", "EXAMPLE_PRIVATE_KEY", sandbox=True)
+r = taxbit_gemini.OrderEventsWS("EXAMPLE_PUBLIC_KEY", "EXAMPLE_PRIVATE_KEY", sandbox=True)
 ```
 
 #### OrderEvents Websocket Methods 

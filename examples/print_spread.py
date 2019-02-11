@@ -2,7 +2,7 @@
 
 import time
 
-from gemini.order_book import GeminiOrderBook
+from taxbit_gemini.order_book import GeminiOrderBook
 
 book = GeminiOrderBook('ETHUSD')
 book.start()

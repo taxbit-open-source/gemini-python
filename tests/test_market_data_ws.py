@@ -1,7 +1,7 @@
 import sys
 import os
 sys.path.insert(0, '..')
-from gemini import MarketDataWS
+from taxbit_gemini import MarketDataWS
 
 
 def client():

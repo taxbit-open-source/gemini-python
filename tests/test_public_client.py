@@ -1,6 +1,6 @@
 import sys
 sys.path.insert(0, '..')
-from gemini import PublicClient
+from taxbit_gemini import PublicClient
 
 
 def client():

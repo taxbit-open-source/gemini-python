@@ -2,7 +2,7 @@ import sys
 import time
 sys.path.insert(0, '..')
 import os
-from gemini import OrderEventsWS
+from taxbit_gemini import OrderEventsWS
 
 
 def client():
