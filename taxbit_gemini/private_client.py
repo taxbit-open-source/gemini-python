@@ -212,7 +212,7 @@ class PrivateClient(PublicClient):
         """
         return self.api_query('/v1/orders')
 
-    def get_past_trades(self, symbol, limit_trades=None, timestamp=0):
+    def get_past_trades(self, symbol, limit_trades=None, timestamp=0, **kwargs):
         """
         Returns all the past trades associated with the API.
         Providing a limit_trade is optional.
@@ -230,7 +230,7 @@ class PrivateClient(PublicClient):
             "limit_trades": 500 if limit_trades is None else limit_trades,
             "timestamp": timestamp
         }
-        return self.api_query('/v1/mytrades', payload)
+        return self.api_query('/v1/mytrades', payload, **kwargs)
 
     def get_trade_volume(self):
         """

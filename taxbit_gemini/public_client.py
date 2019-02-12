@@ -18,7 +18,7 @@ class PublicClient(metaclass=Meta):
         else:
             self.public_base_url = 'https://api.gemini.com/v1'
 
-    def symbols(self):
+    def symbols(self, **kwargs):
         """
         This endpoint retrieves all available symbols for trading.
 
@@ -27,6 +27,8 @@ class PublicClient(metaclass=Meta):
             example: ['btcusd', 'ethbtc', 'ethusd']
         """
         r = requests.get(self.public_base_url + '/symbols')
+        if 'return_status' in kwargs and kwargs['return_status']:
+            return r.json(), r.status_code
         return r.json()
 
     def get_ticker(self, product_id):

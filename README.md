@@ -229,6 +229,10 @@ r.export_to_xml(r'/c/Users/user/Documents', 'accepted')
 - Add test for the cached metaclass
 
 # Change Log
+*0.0.3*
+- Added kwargs to multiple functions
+- Added the ability to return the status code for the public symbols function
+
 *0.0.2*
 - Added the timestamp for the past trades endpoint
 - Added the ability to return the status code from the api query
