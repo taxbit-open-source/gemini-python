@@ -96,7 +96,9 @@ r.active_orders()
 # Will get the last 500 past trades
 r.get_past_trades("BTCUSD")
 # Alternatively, you can set the limit_trades number to your liking
-r.get_past_trades("BTCUSD", limit_trades="200")
+r.get_past_trades("BTCUSD", limit_trades="200", timestamp=1549928698778)
+# you can also set the timestamp
+r.get_past_trades("BTCUSD", limit_trades="200", timestamp=1549928698778)
 ```
 - [get_trade_volume](https://docs.gemini.com/rest-api/#get-trade-volume)
 ```python
@@ -227,13 +229,10 @@ r.export_to_xml(r'/c/Users/user/Documents', 'accepted')
 - Add test for the cached metaclass
 
 # Change Log
-*0.2.0*
-- Created BaseWebsocket class 
-- Created OrderEventsWS class to interact with the order events websocket
-- Created MarketDataWS class to interact with the market data websocket 
-- Added greater support for heartbeat API's
-- Improved the Cached metaclass
-- Added support for sandbox urls 
+*0.0.2*
+- Added the timestamp for the past trades endpoint
+- Added the ability to return the status code from the api query
+- Added the transfers endpoint
 
 *0.0.1*
 - Original release

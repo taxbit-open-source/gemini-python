@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='taxbit-gemini-python',
-    version='0.0.1',
+    version='0.0.2',
     packages=['taxbit_gemini'],
     url='https://github.com/taxbit-open-source/gemini-python',
     license='MIT',
