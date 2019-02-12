@@ -243,7 +243,7 @@ class PrivateClient(PublicClient):
         return self.api_query('/v1/tradevolume')
 
     # Fund Management API
-    def get_balance(self):
+    def get_balance(self, **kwargs):
         """
         This will show the available balances in the supported currencies.
 
@@ -266,7 +266,7 @@ class PrivateClient(PublicClient):
                 }
             ]
         """
-        return self.api_query('/v1/balances')
+        return self.api_query('/v1/balances', **kwargs)
 
     def get_transfers(self, timestamp=0, limit_transfers=50, **kwargs):
         """
