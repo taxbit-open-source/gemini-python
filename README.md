@@ -4,7 +4,7 @@ A python client for the Gemini API and Websocket
 ## Getting Started
 ### Installation
 ```python
-pip install taxbit_gemini
+pip install taxbit-gemini-python
 ```
 ### PublicClient
 This endpoint doesn't require an api-key and can
